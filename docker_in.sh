@@ -17,7 +17,7 @@ yum -y install wget curl vim
 yum -y install python3 python3-pip
 yum -y install libffi-dev zlib1g-dev libreadline-dev libssl-dev libbz2-dev libsqlite3-dev libffi-dev
 #更换pip国内源
-mkdir ~/.pip
+mkdir -p ~/.pip
 sudo tee ~/.pip/pip.conf <<-'EOF'
   [global]
   timeout = 6000
@@ -26,6 +26,7 @@ sudo tee ~/.pip/pip.conf <<-'EOF'
 EOF
 #docker官方脚本安装docker,阿里云镜像安装，更换国内源
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+systtemctl start docker
 #docker更换国内源
 mkdir -p /etc/docker
 sudo tee /etc/docker/daemon.json <<-'EOF'
